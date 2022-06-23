@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load  static %} 
+
+{% block content %}
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">TRANSPORT SISTEM</li>
+      <li><a href="{% url 'home_app:index' %}">Inicio</a></li>
+      <li>
+        <a href="#">Administracion</a>
+        <ul class="menu vertical">
+          <li><a href="{% url 'home_app:index-admin' %}">Reportes ventas</a></li>
+          <li><a href="{% url 'home_app:admin-reporte' %}">Reportes Ingresos</a></li>
+          <li><a href="{% url 'users_app:user-lista' %}">Usuarios</a></li>
+          <li><a href="{% url 'home_app:list_meet' %}">Crear reunion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Ventas</a>
+        <ul class="menu vertical">
+          <li><a href="{% url 'producto_app:producto-lista' %}">Productos</a></li>
+          <li><a href="{% url 'venta_app:venta-index' %}">Venta</a></li>
+          <li><a href="{% url 'caja_app:caja-index' %}">Cierre de caja</a></li>
+          <li><a href="{% url 'producto_app:producto-filtros' %}">Reportes</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Transporte</a>
+        <ul class="menu vertical">
+          <li><a href="{% url 'vehiculo_app:transporte-lista' %}">Transporte</a></li>
+          <li><a href="{% url 'vehiculo_app:filtro' %}">Reporte Transporte</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Maquinaria</a>
+        <ul class="menu vertical">
+          <li><a href="{% url 'vehiculo_app:Rent_maquinaria' %}">Alquilar Maquinaria</a></li>
+          <li><a href="{% url 'vehiculo_app:vent_maquinaria' %}">Vender Maquinaria </a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'home_app:lista_concacto_clientes' %}">Pedidos Sitio web</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <div class="top-bar-left">
+        <h6 style="color: blue;">Usuario:</h6>
+        <h6 style="color: blue;">{{ user.full_name }}</h6>
+      </div>
+      <div class="top-bar-right">
+        <a href="{% url 'users_app:user-logout' %}">
+          <span class="label">SALIR</span>
+        </a>
+      </div>
+    </ul>
+  </div>
+</div>
+
+      <div class="grid-container" style="padding: 1em;">
+        {% block panel-content %}
+        {% endblock panel-content %}
+      </div>
+</div>
+{% endblock content %}
